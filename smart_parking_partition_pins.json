@@ -1,0 +1,137 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "green_light",
+					"strict" : false
+				},
+				{
+					"name" : "digs[0]",
+					"strict" : false
+				},
+				{
+					"name" : "digs[2]",
+					"strict" : false
+				},
+				{
+					"name" : "digs[3]",
+					"strict" : false
+				},
+				{
+					"name" : "digs[4]",
+					"strict" : false
+				},
+				{
+					"name" : "digs[5]",
+					"strict" : false
+				},
+				{
+					"name" : "digs[6]",
+					"strict" : false
+				},
+				{
+					"name" : "g1_out",
+					"strict" : false
+				},
+				{
+					"name" : "g2_out",
+					"strict" : false
+				},
+				{
+					"name" : "g3_out",
+					"strict" : false
+				},
+				{
+					"name" : "g4_out",
+					"strict" : false
+				},
+				{
+					"name" : "y1_out",
+					"strict" : false
+				},
+				{
+					"name" : "y2_out",
+					"strict" : false
+				},
+				{
+					"name" : "y3_out",
+					"strict" : false
+				},
+				{
+					"name" : "y4_out",
+					"strict" : false
+				},
+				{
+					"name" : "r1_out",
+					"strict" : false
+				},
+				{
+					"name" : "r2_out",
+					"strict" : false
+				},
+				{
+					"name" : "r3_out",
+					"strict" : false
+				},
+				{
+					"name" : "r4_out",
+					"strict" : false
+				},
+				{
+					"name" : "sensor_s1",
+					"strict" : false
+				},
+				{
+					"name" : "sensor_s2",
+					"strict" : false
+				},
+				{
+					"name" : "sensor_s3",
+					"strict" : false
+				},
+				{
+					"name" : "sensor_s4",
+					"strict" : false
+				},
+				{
+					"name" : "pass_in",
+					"strict" : false
+				},
+				{
+					"name" : "pswrd[0]",
+					"strict" : false
+				},
+				{
+					"name" : "pswrd[1]",
+					"strict" : false
+				},
+				{
+					"name" : "pswrd[2]",
+					"strict" : false
+				},
+				{
+					"name" : "pswrd[3]",
+					"strict" : false
+				},
+				{
+					"name" : "pass_rsv",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "sensor_out",
+					"strict" : false
+				},
+				{
+					"name" : "sensor_in",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

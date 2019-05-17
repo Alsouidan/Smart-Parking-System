@@ -1,0 +1,3 @@
+Warning (10273): Verilog HDL warning at smart_parking.v(13): extended using "x" or "z" File: C:/Users/LENOVO/Desktop/dsd project/smart_parking.v Line: 13
+Warning (10268): Verilog HDL information at smart_parking.v(110): always construct contains both blocking and non-blocking assignments File: C:/Users/LENOVO/Desktop/dsd project/smart_parking.v Line: 110
+Warning (10268): Verilog HDL information at smart_parking.v(136): always construct contains both blocking and non-blocking assignments File: C:/Users/LENOVO/Desktop/dsd project/smart_parking.v Line: 136

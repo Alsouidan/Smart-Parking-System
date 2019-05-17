@@ -1,0 +1,221 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'entrance_exit:comb_3|clk_generator:comb_3|slow_clk'
+Slack : -6.853
+TNS   : -53.661
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -5.848
+TNS   : -71.410
+
+Type  : Slow 1200mV 85C Model Setup 'entrance_exit:comb_3|stateout'
+Slack : -5.643
+TNS   : -22.572
+
+Type  : Slow 1200mV 85C Model Setup 'entrance_exit:comb_3|countdecr2'
+Slack : -4.844
+TNS   : -19.376
+
+Type  : Slow 1200mV 85C Model Setup 'entrance_exit:comb_3|green_light'
+Slack : -4.076
+TNS   : -15.879
+
+Type  : Slow 1200mV 85C Model Setup 'pass_rsv'
+Slack : -1.103
+TNS   : -12.900
+
+Type  : Slow 1200mV 85C Model Hold 'entrance_exit:comb_3|green_light'
+Slack : 0.348
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'entrance_exit:comb_3|countdecr2'
+Slack : 0.363
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'entrance_exit:comb_3|stateout'
+Slack : 0.363
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : 0.622
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'entrance_exit:comb_3|clk_generator:comb_3|slow_clk'
+Slack : 0.641
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'pass_rsv'
+Slack : 1.084
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -39.478
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'pass_rsv'
+Slack : -3.000
+TNS   : -33.866
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'entrance_exit:comb_3|clk_generator:comb_3|slow_clk'
+Slack : -1.403
+TNS   : -28.060
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'entrance_exit:comb_3|countdecr2'
+Slack : -1.403
+TNS   : -5.612
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'entrance_exit:comb_3|green_light'
+Slack : -1.403
+TNS   : -5.612
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'entrance_exit:comb_3|stateout'
+Slack : -1.403
+TNS   : -5.612
+
+Type  : Slow 1200mV 0C Model Setup 'entrance_exit:comb_3|clk_generator:comb_3|slow_clk'
+Slack : -6.331
+TNS   : -48.097
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -5.316
+TNS   : -62.481
+
+Type  : Slow 1200mV 0C Model Setup 'entrance_exit:comb_3|stateout'
+Slack : -5.136
+TNS   : -20.544
+
+Type  : Slow 1200mV 0C Model Setup 'entrance_exit:comb_3|countdecr2'
+Slack : -4.366
+TNS   : -17.464
+
+Type  : Slow 1200mV 0C Model Setup 'entrance_exit:comb_3|green_light'
+Slack : -3.645
+TNS   : -14.189
+
+Type  : Slow 1200mV 0C Model Setup 'pass_rsv'
+Slack : -0.994
+TNS   : -11.496
+
+Type  : Slow 1200mV 0C Model Hold 'entrance_exit:comb_3|green_light'
+Slack : 0.313
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'entrance_exit:comb_3|countdecr2'
+Slack : 0.328
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'entrance_exit:comb_3|stateout'
+Slack : 0.329
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : 0.574
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'entrance_exit:comb_3|clk_generator:comb_3|slow_clk'
+Slack : 0.594
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'pass_rsv'
+Slack : 1.037
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -39.478
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'pass_rsv'
+Slack : -3.000
+TNS   : -33.866
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'entrance_exit:comb_3|clk_generator:comb_3|slow_clk'
+Slack : -1.403
+TNS   : -28.060
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'entrance_exit:comb_3|countdecr2'
+Slack : -1.403
+TNS   : -5.612
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'entrance_exit:comb_3|green_light'
+Slack : -1.403
+TNS   : -5.612
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'entrance_exit:comb_3|stateout'
+Slack : -1.403
+TNS   : -5.612
+
+Type  : Fast 1200mV 0C Model Setup 'entrance_exit:comb_3|clk_generator:comb_3|slow_clk'
+Slack : -2.185
+TNS   : -11.222
+
+Type  : Fast 1200mV 0C Model Setup 'entrance_exit:comb_3|stateout'
+Slack : -2.029
+TNS   : -8.116
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -1.905
+TNS   : -16.230
+
+Type  : Fast 1200mV 0C Model Setup 'entrance_exit:comb_3|countdecr2'
+Slack : -1.663
+TNS   : -6.652
+
+Type  : Fast 1200mV 0C Model Setup 'entrance_exit:comb_3|green_light'
+Slack : -1.053
+TNS   : -4.031
+
+Type  : Fast 1200mV 0C Model Setup 'pass_rsv'
+Slack : -0.032
+TNS   : -0.179
+
+Type  : Fast 1200mV 0C Model Hold 'entrance_exit:comb_3|green_light'
+Slack : 0.152
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'entrance_exit:comb_3|stateout'
+Slack : 0.156
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'entrance_exit:comb_3|countdecr2'
+Slack : 0.157
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : 0.239
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'entrance_exit:comb_3|clk_generator:comb_3|slow_clk'
+Slack : 0.250
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'pass_rsv'
+Slack : 0.520
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -29.962
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'pass_rsv'
+Slack : -3.000
+TNS   : -28.414
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'entrance_exit:comb_3|clk_generator:comb_3|slow_clk'
+Slack : -1.000
+TNS   : -20.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'entrance_exit:comb_3|countdecr2'
+Slack : -1.000
+TNS   : -4.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'entrance_exit:comb_3|green_light'
+Slack : -1.000
+TNS   : -4.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'entrance_exit:comb_3|stateout'
+Slack : -1.000
+TNS   : -4.000
+
+------------------------------------------------------------

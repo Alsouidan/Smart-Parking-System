@@ -1,0 +1,207 @@
+
+module seven_segment_decoder(num,seg); 
+   input[2:0]num; 
+   output reg [6:0]seg; 
+   always@(num) 
+      begin 
+        case (num) 
+	  0: seg<= ~7'b0111111; 
+	  1: seg<= ~7'b0000110; 
+	  2: seg<= ~7'b1011011;  
+	  3: seg<= ~7'b1001111; 
+	  4: seg<= ~7'b1100110;
+	  default: seg<= 7'bx;  
+	endcase 
+      end 
+endmodule
+
+//----------------------------------------------------------------------------------------------------------------
+
+module clk_generator(altera_clk,slow_clk); 
+	input altera_clk; 
+	output reg slow_clk; 
+	reg [24:0] count; 
+	always@(posedge altera_clk) 
+		begin 
+			count = count +1; 
+			if(count == 25'd25000000) begin slow_clk=~slow_clk; count=0; end 
+		end 
+endmodule
+
+//----------------------------------------------------------------------------------------------------------------
+
+module car_space(input sensor,input g_ee, input y_ee, output reg g_out,output reg r_out,output reg y_out);
+	initial
+		begin
+		  g_out=1;
+		  y_out=0;
+		  r_out=0;
+		end
+	always@(sensor or g_ee or y_ee)
+		begin
+			if(sensor==0) begin r_out=1; y_out=0;g_out=0;end
+			if(sensor==1) 
+				begin 
+					if(g_ee==0 & y_ee==1) begin r_out=0; y_out=1; g_out=0; end
+					if(g_ee==1 & y_ee==0) begin r_out=0; y_out=0; g_out=1; end
+					if(g_ee==0 & y_ee==0) begin r_out=0; y_out=0; g_out=1; end
+					//else begin r_out=0; y_out=0; g_out=1; end
+				end
+		end
+endmodule 
+
+//----------------------------------------------------------------------------------------------------------------
+
+module entrance_exit(input clk, input sensor_s1, input sensor_s2, input sensor_s3, input sensor_s4, input sensor_in, input sensor_out, input [3:0] pswrd, input pass_in, input pass_rsv, output reg green_light, output wire[6:0] digs, output reg go1, output reg go2, output reg go3, output reg go4, output reg yo1, output reg yo2, output reg yo3, output reg yo4); 
+	reg yo1t,yo2t,yo3t,yo4t;
+	wire slo_clk; 
+	reg countincr,countdecr, countdecr2; 
+	reg[3:0] count; 
+	reg [2:0] green_count;
+	reg[12:0] rsrv_counter; 
+	reg [3:0] password; 
+	reg[5:0] countpos, countneg, countneg2; 
+	parameter no_car= 1'b0, car=1'b1, total=4'd4; 
+	reg state,next, stateout, nextout;
+	reg [12:0] timer;
+	integer countres;
+	reg greenc;
+	
+	initial 
+		begin 
+		  state=no_car;
+		  stateout=no_car; 
+		  
+		end 
+		
+	clk_generator(clk,slo_clk); 
+	
+	initial 
+		begin 
+		  yo1=0; yo2=0; yo3=0; yo4=0;
+		  countres=0;
+		  countincr=0;
+		  countdecr=0;
+		  countdecr2=0;
+		  count=total;
+		  timer=0;
+		  greenc<=0;
+		end
+		
+	always@(negedge pass_rsv) 
+		begin 
+			//if(slo_clk==1) 
+			//	begin
+					password=pswrd;
+					rsrv_counter=timer;
+					yo1t=0;yo2t=0;yo3t=0;yo4t=0;
+					countres=1;
+					
+					case(1'b1)
+						sensor_s1: begin go1=0; yo1t=1; end
+						sensor_s2: begin go2=0; yo2t=1; end
+						sensor_s3: begin go3=0; yo3t=1; end
+						sensor_s4: begin go4=0; yo4t=1; end
+					endcase
+			//	end
+		end
+	
+	
+	always@(pass_in)
+		begin
+		if(pass_in==1)
+			begin
+			if(pswrd==password)
+				begin
+				  green_count=0;
+				  green_light<=1;
+				  greenc=1;
+				end
+			end
+		else begin green_light<=0;	end
+		end
+	
+	always@(sensor_in) 
+		begin 
+		  if(state==no_car & sensor_in==0) next = car;
+		  if(state==car & sensor_in==1) next = no_car;
+		end 
+		
+	always@(sensor_out) 
+		begin 
+		  if(stateout==no_car & sensor_out==0) nextout=car;
+		  if(stateout==car & sensor_out==1) nextout=no_car;
+		end 
+		
+	always@(posedge slo_clk) 
+		begin 
+		  state=next; 
+		  stateout=nextout;  
+		  if((yo1|yo2|yo3|yo4)==1) 
+			  begin
+			  timer=timer+1;
+			  end
+			  
+		  if((timer-rsrv_counter)>15)
+			  begin
+			  case (1'b1)
+			  yo1t:begin if(sensor_s1) begin countdecr2=1;end end
+			  yo2t:begin if(sensor_s2) begin countdecr2=1;end end
+			  yo3t:begin if(sensor_s3) begin countdecr2=1;end end
+			  yo4t:begin if(sensor_s4) begin countdecr2=1;end end
+			  endcase
+			  yo1=0;yo2=0;yo3=0;yo4=0;
+			 // countres=0;
+			  end
+		  else
+			  begin
+			  yo1=yo1t;yo2=yo2t;yo3=yo3t;yo4=yo4t;
+			  end
+		  if(green_count<10) green_count<=green_count+1;
+				else begin green_count<=0; green_light<=0; end
+		end 
+		
+	always@(state) 
+	  if(state==car & yo1|yo2|yo3|yo4==0) countincr=1; 
+	  // & ((yo1|yo2|yo3|yo4 ==0)|(((yo1|yo2|yo3|yo4)==1) & (~green_light)))
+	  else countincr=0; 
+	  
+	always@(stateout) 
+	  if(stateout==car) countdecr=1; else countdecr=0; 
+	  
+	always@(posedge countincr) 
+	  if( count>0) countpos=countpos+1; 
+	  
+	always@(posedge countdecr) 
+	  if(count<total) countneg=countneg+1; 
+	  
+	always@(posedge countdecr2) 
+	  if(count<total) countneg2=countneg2+1;   
+	  
+	always@(countpos or countneg or countneg2 or countres)
+	begin
+
+		count=total-countpos+countneg+countneg2-countres; 
+	
+	end
+	seven_segment_decoder(count,digs); 
+
+endmodule 
+ 
+//----------------------------------------------------------------------------------------------------------------
+
+module smart_parking(clk,sensor_in, sensor_out,pswrd,pass_in,pass_rsv, sensor_s1, sensor_s2, sensor_s3, sensor_s4, green_light, digs, g1_out, g2_out, g3_out, g4_out, y1_out, y2_out, y3_out, y4_out, r1_out, r2_out, r3_out, r4_out); 
+	input clk, sensor_in, sensor_out, pass_in, pass_rsv, sensor_s1, sensor_s2, sensor_s3, sensor_s4; 
+	input [3:0] pswrd;
+	output wire green_light, g1_out, g2_out, g3_out, g4_out, y1_out, y2_out, y3_out, y4_out, r1_out, r2_out, r3_out, r4_out; 
+	output wire [6:0] digs;
+	wire go1, go2, go3, go4, yo1, yo2, yo3, yo4;
+	entrance_exit (clk,  sensor_s1, sensor_s2, sensor_s3, sensor_s4, sensor_in, sensor_out, pswrd, pass_in, pass_rsv, green_light, digs, go1, go2, go3, go4, yo1, yo2, yo3, yo4);
+	car_space s1(sensor_s1, go1, yo1, g1_out, r1_out, y1_out);
+	car_space s2(sensor_s2, go2, yo2, g2_out, r2_out, y2_out);
+	car_space s3(sensor_s3, go3, yo3, g3_out, r3_out, y3_out);
+	car_space s4(sensor_s4, go4, yo4, g4_out, r4_out, y4_out);
+endmodule 
+
+
+
